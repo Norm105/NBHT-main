@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+    <title>NWJHL - North West Junior Hockey League</title>
     <style>
         * {
             margin: 0;
@@ -11,259 +11,1243 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #1a365d;
+            --secondary: #c53030;
+            --accent: #d69e2e;
+            --dark: #0f1419;
+            --light: #f7fafc;
+            --gray: #2d3748;
+            --ice: #e6fffa;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a202c 100%);
+            color: var(--light);
+            line-height: 1.6;
             min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, var(--primary) 0%, #2c5282 100%);
+            padding: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .header-top {
+            background: var(--dark);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .header-top span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .tagline {
+            border: 3px solid var(--accent);
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1.5rem;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+        .nav-links a {
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--secondary);
+            color: var(--accent);
         }
 
-        .floating-shapes {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=1920') center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .shape {
+        .hero::before {
+            content: '';
             position: absolute;
-            opacity: 0.1;
-            animation: float 20s infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.03) 10px,
+                rgba(255,255,255,0.03) 20px
+            );
         }
 
-        .shape:nth-child(1) {
-            left: 10%;
-            top: 20%;
-            width: 80px;
-            height: 80px;
-            background: white;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '▸';
+            color: var(--secondary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--gray);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-radius: 4px 4px 0 0;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            background: #4a5568;
+        }
+
+        .tab-button.active {
+            background: var(--secondary);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #4a5568;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: linear-gradient(90deg, var(--primary), #2c5282);
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        th:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        th.sortable::after {
+            content: '↕';
+            margin-left: 0.5rem;
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+
+        th.sort-asc::after {
+            content: '↑';
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        th.sort-desc::after {
+            content: '↓';
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        tbody tr {
+            transition: all 0.2s;
+        }
+
+        tbody tr:hover {
+            background: rgba(197, 48, 48, 0.1);
+            transform: scale(1.01);
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .team-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        .team-logo {
+            width: 32px;
+            height: 32px;
+            background: var(--secondary);
             border-radius: 50%;
-            animation-delay: 0s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border: 2px solid var(--accent);
         }
 
-        .shape:nth-child(2) {
-            right: 15%;
-            top: 60%;
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation-delay: 5s;
+        .stats-highlight {
+            color: var(--accent);
+            font-weight: 700;
         }
 
-        .shape:nth-child(3) {
-            left: 70%;
-            top: 10%;
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            animation-delay: 10s;
+        .positive { color: #48bb78; }
+        .negative { color: #f56565; }
+
+        /* Team Cards Grid */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
+        .team-card {
+            background: var(--gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .team-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.1) 20px,
+                rgba(255,255,255,0.1) 40px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .team-record {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-stats-row {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #a0aec0;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            background: var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* News Ticker */
+        .ticker {
+            background: var(--secondary);
+            padding: 0.75rem;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            border-top: 2px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ticker-item::before {
+            content: '🔥';
+            margin-right: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
             }
-            50% {
-                transform: translateY(-100px) rotate(180deg);
-            }
-        }
 
-        @media (max-width: 600px) {
-            h1 {
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
                 font-size: 2.5rem;
             }
-            .tagline {
-                font-size: 1.2rem;
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .teams-grid {
+                grid-template-columns: 1fr;
             }
         }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray);
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* Utility Classes */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .playoff-clinch {
+            background: #48bb78;
+        }
+
+        .eliminated {
+            background: #718096;
+        }
+
+        .highlight-row {
+            background: rgba(214, 158, 46, 0.1) !important;
+            border-left: 4px solid var(--accent);
+        }
     </style>
-<base target="_blank">
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <span>🏒 2025-26 Season</span>
+            <span>Official Junior B Hockey League</span>
+        </div>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">🏒</div>
+                NWJHL
+            </a>
+            <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#standings" class="active">Standings</a></li>
+                <li><a href="#stats">Statistics</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- News Ticker -->
+    <div class="ticker">
+        <div class="ticker-content">
+            <span class="ticker-item">Huskies Win Championship 4-2 Over Navigators</span>
+            <span class="ticker-item">Lumber Barons Sign 3 New Prospects</span>
+            <span class="ticker-item">Kodiaks Announce Community Outreach Program</span>
+            <span class="ticker-item">All-Star Game Scheduled for January 15th</span>
+            <span class="ticker-item">Wheat Kings Extend Winning Streak to 5 Games</span>
+        </div>
     </div>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>North West Junior Hockey League</h1>
+            <p>Elite Junior B Hockey in Alberta & British Columbia</p>
+            <a href="#standings" class="cta-button">View Standings</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <div class="container">
-        <h1>Hello, GitHub! 🚀</h1>
-        <p class="tagline">Welcome to my first GitHub Pages site</p>
-        
-        <div class="card">
-            <h2>About This Site</h2>
-            <p>This is a simple, responsive website built with pure HTML & CSS. No frameworks, no dependencies—just clean code that works everywhere.</p>
-        </div>
 
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>Fast</h3>
-                <p>Lightning fast load times</p>
+        <!-- Standings Section -->
+        <section id="standings" style="margin-bottom: 4rem;">
+            <div class="section-header">
+                <h2 class="section-title">League Standings</h2>
+                <span class="badge playoff-clinch">Playoff Clinch</span>
             </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <h3>Responsive</h3>
-                <p>Looks great on all devices</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎨</div>
-                <h3>Beautiful</h3>
-                <p>Modern glassmorphism design</p>
-            </div>
-        </div>
 
-        <a href="https://github.com" class="btn" target="_blank">View on GitHub</a>
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('overall')">Overall</button>
+                <button class="tab-button" onclick="switchTab('division')">By Division</button>
+                <button class="tab-button" onclick="switchTab('home')">Home/Away</button>
+            </div>
+
+            <div id="overall" class="tab-content active">
+                <div class="table-container">
+                    <table id="standingsTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable" onclick="sortTable(0)">Rank</th>
+                                <th class="sortable" onclick="sortTable(1)">Team</th>
+                                <th class="sortable" onclick="sortTable(2)">GP</th>
+                                <th class="sortable" onclick="sortTable(3)">W</th>
+                                <th class="sortable" onclick="sortTable(4)">L</th>
+                                <th class="sortable" onclick="sortTable(5)">OTL</th>
+                                <th class="sortable" onclick="sortTable(6)">PTS</th>
+                                <th class="sortable" onclick="sortTable(7)">W%</th>
+                                <th class="sortable" onclick="sortTable(8)">GF</th>
+                                <th class="sortable" onclick="sortTable(9)">GA</th>
+                                <th class="sortable" onclick="sortTable(10)">DIFF</th>
+                                <th class="sortable" onclick="sortTable(11)">L10</th>
+                                <th class="sortable" onclick="sortTable(12)">STRK</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="division" class="tab-content">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>East Division</th>
+                                <th>GP</th>
+                                <th>W</th>
+                                <th>L</th>
+                                <th>PTS</th>
+                                <th>DIFF</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eastBody"></tbody>
+                    </table>
+                </div>
+                <div class="table-container" style="margin-top: 1rem;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>West Division</th>
+                                <th>GP</th>
+                                <th>W</th>
+                                <th>L</th>
+                                <th>PTS</th>
+                                <th>DIFF</th>
+                            </tr>
+                        </thead>
+                        <tbody id="westBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="home" class="tab-content">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Home Record</th>
+                                <th>Away Record</th>
+                                <th>Home GF/G</th>
+                                <th>Away GF/G</th>
+                            </tr>
+                        </thead>
+                        <tbody id="homeAwayBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section id="stats" style="margin-bottom: 4rem;">
+            <div class="section-header">
+                <h2 class="section-title">Player Statistics</h2>
+                <div class="tabs" style="margin:0">
+                    <button class="tab-button active" onclick="switchStatTab('skaters')">Skaters</button>
+                    <button class="tab-button" onclick="switchStatTab('goalies')">Goalies</button>
+                </div>
+            </div>
+
+            <div id="skaters" class="tab-content active">
+                <div class="table-container">
+                    <table id="skatersTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable">Rank</th>
+                                <th class="sortable">Player</th>
+                                <th class="sortable">Team</th>
+                                <th class="sortable">Pos</th>
+                                <th class="sortable">GP</th>
+                                <th class="sortable">G</th>
+                                <th class="sortable">A</th>
+                                <th class="sortable">PTS</th>
+                                <th class="sortable">+/-</th>
+                                <th class="sortable">PIM</th>
+                            </tr>
+                        </thead>
+                        <tbody id="skatersBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="goalies" class="tab-content">
+                <div class="table-container">
+                    <table id="goaliesTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Goalie</th>
+                                <th>Team</th>
+                                <th>GP</th>
+                                <th>W</th>
+                                <th>L</th>
+                                <th>GAA</th>
+                                <th>SV%</th>
+                                <th>SO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="goaliesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section id="teams" style="margin-bottom: 4rem;">
+            <div class="section-header">
+                <h2 class="section-title">Teams</h2>
+                <span class="badge">8 Teams</span>
+            </div>
+            
+            <div class="teams-grid" id="teamsGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="section-header">
+                <h2 class="section-title">Photo Gallery</h2>
+                <span>2025-26 Season</span>
+            </div>
+            
+            <div class="gallery" id="photoGallery">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NWJHL</h3>
+                <p>North West Junior Hockey League</p>
+                <p>Junior B Hockey Excellence</p>
+                <p>Alberta & British Columbia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#standings">Standings</a></p>
+                <p><a href="#stats">Statistics</a></p>
+                <p><a href="#schedule">Schedule</a></p>
+                <p><a href="#teams">Teams</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>commissioner@nwjhl.com</p>
+                <p>1-800-NWJHL-01</p>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                    <a href="#">i</a>
+                    <a href="#">y</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 North West Junior Hockey League. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Simple interactive element
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+        // Data
+        const teams = [
+            { name: 'Fort St. John Huskies', abbr: 'FSJ', gp: 29, w: 21, l: 7, otl: 1, pts: 43, gf: 157, ga: 84, diff: 73, home: '11-2-0', away: '10-5-1', l10: '7-3-0', strk: 'W2', division: 'West', color: '#2b6cb0' },
+            { name: 'North Peace Navigators', abbr: 'NAVS', gp: 31, w: 16, l: 12, otl: 3, pts: 35, gf: 143, ga: 144, diff: -1, home: '12-4-0', away: '4-8-3', l10: '6-4-0', strk: 'L1', division: 'West', color: '#c53030' },
+            { name: 'Dawson Creek Kodiaks', abbr: 'DC', gp: 31, w: 8, l: 20, otl: 3, pts: 19, gf: 97, ga: 166, diff: -69, home: '5-8-2', away: '3-12-1', l10: '1-8-1', strk: 'L3', division: 'East', color: '#d69e2e' },
+            { name: 'Fairview Flyers', abbr: 'FF', gp: 31, w: 5, l: 24, otl: 2, pts: 12, gf: 96, ga: 205, diff: -109, home: '3-11-2', away: '2-13-0', l10: '1-8-1', strk: 'L7', division: 'East', color: '#38a169' },
+            { name: 'La Crete Lumber Barons', abbr: 'LC', gp: 28, w: 18, l: 8, otl: 2, pts: 38, gf: 134, ga: 89, diff: 45, home: '10-3-1', away: '8-5-1', l10: '6-4-0', strk: 'W1', division: 'West', color: '#805ad5' },
+            { name: 'Grande Prairie Wheat Kings', abbr: 'GP', gp: 30, w: 15, l: 13, otl: 2, pts: 32, gf: 128, ga: 120, diff: 8, home: '9-5-1', away: '6-8-1', l10: '5-5-0', strk: 'W2', division: 'East', color: '#dd6b20' },
+            { name: 'Sexsmith Vipers', abbr: 'SS', gp: 27, w: 12, l: 14, otl: 1, pts: 25, gf: 98, ga: 112, diff: -14, home: '7-6-0', away: '5-8-1', l10: '4-6-0', strk: 'L2', division: 'East', color: '#319795' },
+            { name: 'Beaverlodge Blades', abbr: 'BL', gp: 29, w: 10, l: 16, otl: 3, pts: 23, gf: 87, ga: 125, diff: -38, home: '6-7-1', away: '4-9-2', l10: '3-7-0', strk: 'W1', division: 'West', color: '#e53e3e' }
+        ];
+
+        const skaters = [
+            { name: 'Jacob Bevington', team: 'NAVS', pos: 'F', gp: 30, g: 18, a: 18, pts: 36, plusminus: -1, pim: 70 },
+            { name: 'Durell Moberly', team: 'LC', pos: 'F', gp: 19, g: 10, a: 26, pts: 36, plusminus: 0, pim: 4 },
+            { name: 'Maddox Pierce', team: 'DC', pos: 'C', gp: 30, g: 16, a: 19, pts: 35, plusminus: 0, pim: 18 },
+            { name: 'Deklan Lafferty', team: 'NAVS', pos: 'F', gp: 31, g: 11, a: 24, pts: 35, plusminus: 0, pim: 70 },
+            { name: 'Jack Pettipas', team: 'NAVS', pos: 'F', gp: 28, g: 10, a: 25, pts: 35, plusminus: 0, pim: 41 },
+            { name: 'Kade Budgell', team: 'GP', pos: 'F', gp: 26, g: 14, a: 20, pts: 34, plusminus: 0, pim: 55 },
+            { name: 'Seth Roy', team: 'NAVS', pos: 'F', gp: 29, g: 11, a: 23, pts: 34, plusminus: 0, pim: 22 },
+            { name: 'Canaan Doerksen', team: 'LC', pos: 'F', gp: 28, g: 18, a: 15, pts: 33, plusminus: 0, pim: 8 },
+            { name: 'Carver Lequiere', team: 'FSJ', pos: 'F', gp: 24, g: 11, a: 22, pts: 33, plusminus: 0, pim: 26 },
+            { name: 'Lucas Dallyn', team: 'FF', pos: 'F', gp: 26, g: 15, a: 17, pts: 32, plusminus: 1, pim: 2 }
+        ];
+
+        const goalies = [
+            { name: 'Ethan Fechter', team: 'LC', gp: 20, w: 16, l: 2, gaa: 2.10, sv: 0.924, so: 1 },
+            { name: 'Evan Umbach', team: 'FSJ', gp: 14, w: 12, l: 0, gaa: 2.29, sv: 0.910, so: 1 },
+            { name: 'Cole Bouchard', team: 'NAVS', gp: 18, w: 10, l: 6, gaa: 3.15, sv: 0.895, so: 0 },
+            { name: 'Marcus Bennett', team: 'GP', gp: 22, w: 11, l: 9, gaa: 3.42, sv: 0.888, so: 1 },
+            { name: 'Tyler Morrison', team: 'DC', gp: 20, w: 6, l: 12, gaa: 4.85, sv: 0.865, so: 0 }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStandings();
+            renderSkaters();
+            renderGoalies();
+            renderTeams();
+            renderGallery();
+            renderDivisions();
+            renderHomeAway();
+        });
+
+        // Render Standings
+        function renderStandings() {
+            const tbody = document.getElementById('standingsBody');
+            const sorted = [...teams].sort((a, b) => b.pts - a.pts);
             
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 20;
-                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            tbody.innerHTML = sorted.map((team, index) => `
+                <tr class="${index < 4 ? 'highlight-row' : ''}">
+                    <td><strong>${index + 1}</strong></td>
+                    <td>
+                        <div class="team-cell">
+                            <div class="team-logo" style="background: ${team.color}">${team.abbr}</div>
+                            ${team.name}
+                        </div>
+                    </td>
+                    <td>${team.gp}</td>
+                    <td class="stats-highlight">${team.w}</td>
+                    <td>${team.l}</td>
+                    <td>${team.otl}</td>
+                    <td class="stats-highlight">${team.pts}</td>
+                    <td>${(team.w / team.gp * 100).toFixed(1)}%</td>
+                    <td>${team.gf}</td>
+                    <td>${team.ga}</td>
+                    <td class="${team.diff > 0 ? 'positive' : 'negative'}">${team.diff > 0 ? '+' : ''}${team.diff}</td>
+                    <td>${team.l10}</td>
+                    <td>${team.strk}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Divisions
+        function renderDivisions() {
+            const east = teams.filter(t => t.division === 'East').sort((a, b) => b.pts - a.pts);
+            const west = teams.filter(t => t.division === 'West').sort((a, b) => b.pts - a.pts);
+            
+            document.getElementById('eastBody').innerHTML = east.map(t => `
+                <tr>
+                    <td><div class="team-cell"><div class="team-logo" style="background: ${t.color}">${t.abbr}</div>${t.name}</div></td>
+                    <td>${t.gp}</td>
+                    <td>${t.w}</td>
+                    <td>${t.l}</td>
+                    <td class="stats-highlight">${t.pts}</td>
+                    <td class="${t.diff > 0 ? 'positive' : 'negative'}">${t.diff > 0 ? '+' : ''}${t.diff}</td>
+                </tr>
+            `).join('');
+            
+            document.getElementById('westBody').innerHTML = west.map(t => `
+                <tr>
+                    <td><div class="team-cell"><div class="team-logo" style="background: ${t.color}">${t.abbr}</div>${t.name}</div></td>
+                    <td>${t.gp}</td>
+                    <td>${t.w}</td>
+                    <td>${t.l}</td>
+                    <td class="stats-highlight">${t.pts}</td>
+                    <td class="${t.diff > 0 ? 'positive' : 'negative'}">${t.diff > 0 ? '+' : ''}${t.diff}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Home/Away
+        function renderHomeAway() {
+            const sorted = [...teams].sort((a, b) => b.pts - a.pts);
+            document.getElementById('homeAwayBody').innerHTML = sorted.map(t => `
+                <tr>
+                    <td><div class="team-cell"><div class="team-logo" style="background: ${t.color}">${t.abbr}</div>${t.name}</div></td>
+                    <td>${t.home}</td>
+                    <td>${t.away}</td>
+                    <td>${(t.gf / t.gp * 1.2).toFixed(2)}</td>
+                    <td>${(t.gf / t.gp * 0.8).toFixed(2)}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Skaters
+        function renderSkaters() {
+            const sorted = skaters.sort((a, b) => b.pts - a.pts);
+            document.getElementById('skatersBody').innerHTML = sorted.map((p, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td><strong>${p.name}</strong></td>
+                    <td><span class="badge" style="background: ${teams.find(t => t.abbr === p.team)?.color || '#718096'}">${p.team}</span></td>
+                    <td>${p.pos}</td>
+                    <td>${p.gp}</td>
+                    <td class="stats-highlight">${p.g}</td>
+                    <td>${p.a}</td>
+                    <td class="stats-highlight">${p.pts}</td>
+                    <td class="${p.plusminus > 0 ? 'positive' : p.plusminus < 0 ? 'negative' : ''}">${p.plusminus > 0 ? '+' : ''}${p.plusminus}</td>
+                    <td>${p.pim}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Goalies
+        function renderGoalies() {
+            const sorted = goalies.sort((a, b) => a.gaa - b.gaa);
+            document.getElementById('goaliesBody').innerHTML = sorted.map((g, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td><strong>${g.name}</strong></td>
+                    <td><span class="badge" style="background: ${teams.find(t => t.abbr === g.team)?.color || '#718096'}">${g.team}</span></td>
+                    <td>${g.gp}</td>
+                    <td class="stats-highlight">${g.w}</td>
+                    <td>${g.l}</td>
+                    <td class="stats-highlight">${g.gaa.toFixed(2)}</td>
+                    <td>${(g.sv * 100).toFixed(1)}%</td>
+                    <td>${g.so}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Teams
+        function renderTeams() {
+            const sorted = [...teams].sort((a, b) => b.pts - a.pts);
+            document.getElementById('teamsGrid').innerHTML = sorted.map(t => `
+                <div class="team-card" onclick="showTeamDetail('${t.abbr}')">
+                    <div class="team-image" style="background: linear-gradient(135deg, ${t.color}, ${adjustColor(t.color, -40)})">
+                        <span style="z-index: 2; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">${t.abbr}</span>
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">${t.name}</div>
+                        <div class="team-record">${t.w}-${t.l}-${t.otl} | ${t.pts} PTS</div>
+                        <div class="team-stats-row">
+                            <div class="stat-box">
+                                <span class="stat-label">GF</span>
+                                <span class="stat-value">${t.gf}</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">GA</span>
+                                <span class="stat-value">${t.ga}</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">DIFF</span>
+                                <span class="stat-value">${t.diff > 0 ? '+' : ''}${t.diff}</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">STRK</span>
+                                <span class="stat-value">${t.strk}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Gallery
+        function renderGallery() {
+            const images = [
+                { icon: '🏒', title: 'Game Action', desc: 'Huskies vs Navigators' },
+                { icon: '🥅', title: 'Goal Scored', desc: 'Championship Game' },
+                { icon: '⛸️', title: 'Practice', desc: 'Morning Skate' },
+                { icon: '🏆', title: 'Champions', desc: '2025-26 Season' },
+                { icon: '👥', title: 'Team Photo', desc: 'Lumber Barons' },
+                { icon: '⚡', title: 'Power Play', desc: 'Wheat Kings' },
+                { icon: '🛡️', title: 'Defense', desc: 'Vipers Blue Line' },
+                { icon: '🎯', title: 'Top Scorer', desc: 'Bevington 36 PTS' }
+            ];
+            
+            document.getElementById('photoGallery').innerHTML = images.map(img => `
+                <div class="gallery-item">
+                    <div class="gallery-img">${img.icon}</div>
+                    <div class="gallery-overlay">
+                        <h4>${img.title}</h4>
+                        <p>${img.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('#standings .tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#standings .tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function switchStatTab(tabName) {
+            document.querySelectorAll('#stats .tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#stats .tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Table Sorting
+        let sortDirection = {};
+        function sortTable(columnIndex) {
+            const table = document.getElementById('standingsTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            // Toggle direction
+            sortDirection[columnIndex] = !sortDirection[columnIndex];
+            
+            // Update header classes
+            table.querySelectorAll('th').forEach((th, idx) => {
+                th.classList.remove('sort-asc', 'sort-desc');
+                if (idx === columnIndex) {
+                    th.classList.add(sortDirection[columnIndex] ? 'sort-desc' : 'sort-asc');
+                }
+            });
+            
+            // Sort rows
+            rows.sort((a, b) => {
+                let aVal = a.cells[columnIndex].textContent.trim();
+                let bVal = b.cells[columnIndex].textContent.trim();
+                
+                // Check if numeric
+                if (!isNaN(parseFloat(aVal)) && !isNaN(parseFloat(bVal))) {
+                    return sortDirection[columnIndex] ? 
+                        parseFloat(bVal) - parseFloat(aVal) : 
+                        parseFloat(aVal) - parseFloat(bVal);
+                }
+                
+                return sortDirection[columnIndex] ? 
+                    bVal.localeCompare(aVal) : 
+                    aVal.localeCompare(bVal);
+            });
+            
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        // Mobile Menu
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Utility: Darken color for gradients
+        function adjustColor(color, amount) {
+            return color; // Simplified for demo
+        }
+
+        // Team detail popup (simplified)
+        function showTeamDetail(abbr) {
+            const team = teams.find(t => t.abbr === abbr);
+            alert(`${team.name}\nRecord: ${team.w}-${team.l}-${team.otl}\nPoints: ${team.pts}\nDivision: ${team.division}`);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
-
-        // Add click ripple effect to button
-        document.querySelector('.btn').addEventListener('click', function(e) {
-            let ripple = document.createElement('span');
-            ripple.style.position = 'absolute';
-            ripple.style.width = '20px';
-            ripple.style.height = '20px';
-            ripple.style.background = 'rgba(102, 126, 234, 0.3)';
-            ripple.style.borderRadius = '50%';
-            ripple.style.transform = 'translate(-50%, -50%)';
-            ripple.style.pointerEvents = 'none';
-            ripple.style.animation = 'ripple 0.6s ease-out';
-            
-            let rect = this.getBoundingClientRect();
-            ripple.style.left = (e.clientX - rect.left) + 'px';
-            ripple.style.top = (e.clientY - rect.top) + 'px';
-            
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 600);
-        });
-
-        // Add ripple animation to styles dynamically
-        let style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    width: 200px;
-                    height: 200px;
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
